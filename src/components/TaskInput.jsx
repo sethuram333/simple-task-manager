@@ -18,7 +18,7 @@ const TaskInput = ({ taskList, setTaskList }) => {
   return (
     <>
       <div className=" w-[90%] mx-auto grid grid-cols-1 py-5">
-        <div className="flex justify-center gap-3">
+        <div className="flex flex-wrap justify-center gap-3 ">
           <input
             type="text"
             value={task}
