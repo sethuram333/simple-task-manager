@@ -8,12 +8,12 @@ const TaskInput = ({ taskList, setTaskList }) => {
       alert("Please enter a task before adding!");
       return;
     }
-    setTaskList((prev) => [
-      ...prev,
-      { id: Date.now(), task, completed: false },
-    ]);
+    setTaskList((prev) => {
+      const updatedList = [...prev, { id: Date.now(), task, completed: false }];
+      console.log(updatedList);
+      return updatedList;
+    });
     setTask("");
-
   };
   return (
     <>

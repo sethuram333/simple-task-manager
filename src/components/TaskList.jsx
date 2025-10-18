@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
 const TaskList = ({ taskList,setTaskList}) => {
+ 
   const handleDel =(id)=>{
    setTaskList((prev)=>prev.filter((task)=> task.id!==id))
+  }
+  const handleClick =(id)=>{
+    setTaskList((prev)=>
+     prev.map((task)=>
+       task.id=== id ? {...task,completed:!task.completed}:task
+    )
+    )
+     
   }
   return (
     <>
@@ -17,7 +26,9 @@ const TaskList = ({ taskList,setTaskList}) => {
             className=" flex justify-between items-center px-4 py-2 gap-5  mx-auto"
           >
             <div className="flex items-center gap-3">
-              <input type="checkbox"/>
+
+              <input type="checkbox" checked={item.completed} onChange={()=>handleClick(item.id)}/>
+
               <p className="font-[poppins]">{item.task}</p>
             </div>
             <button className="bg-red-500 py-1 px-5 rounded-sm font-[poppins] " onClick={()=>handleDel(item.id)}>del</button>
